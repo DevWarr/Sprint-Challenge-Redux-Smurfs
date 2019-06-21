@@ -18,6 +18,43 @@ class SmurfForm extends Component {
         }
     }
 
+    render() {
+        return (
+            <FormContainer>
+                <Form onSubmit=         {this.state.func} >
+                    <h2>{this.state.msgTitle}</h2>
+                    <Input
+                        type=           "text"
+                        onChange=       {this.handleInputChange}
+                        placeholder=    "name"
+                        value=          {this.state.name}
+                        name=           "name"
+                        required
+                    />
+                    <Input
+                        type=           "number"
+                        onChange=       {this.handleInputChange}
+                        placeholder=    "age"
+                        value=          {this.state.age}
+                        name=           "age"
+                        required
+                    />
+                    <Input
+                        type=           "number"
+                        onChange=       {this.handleInputChange}
+                        placeholder=    "height"
+                        value=          {this.state.height}
+                        name=           "height"
+                        required
+                    />
+                    <Button type=       "submit">
+                        {this.state.msgButton}
+                    </Button>
+                </Form>
+            </FormContainer>
+        )
+    }
+
     componentWillMount() {
         console.log(this.props);
         if (this.props.editSmurf.id) {
@@ -74,43 +111,7 @@ class SmurfForm extends Component {
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value })
     }
-
-    render() {
-        return (
-            <FormContainer>
-                <Form onSubmit=         {this.state.func} >
-                    <h2>{this.state.msgTitle}</h2>
-                    <Input
-                        type=           "text"
-                        onChange=       {this.handleInputChange}
-                        placeholder=    "name"
-                        value=          {this.state.name}
-                        name=           "name"
-                        required
-                    />
-                    <Input
-                        type=           "number"
-                        onChange=       {this.handleInputChange}
-                        placeholder=    "age"
-                        value=          {this.state.age}
-                        name=           "age"
-                        required
-                    />
-                    <Input
-                        type=           "number"
-                        onChange=       {this.handleInputChange}
-                        placeholder=    "height"
-                        value=          {this.state.height}
-                        name=           "height"
-                        required
-                    />
-                    <Button type=       "submit">
-                        {this.state.msgButton}
-                    </Button>
-                </Form>
-            </FormContainer>
-        )
-    }
+    
 }
 
 const mstp = state => {

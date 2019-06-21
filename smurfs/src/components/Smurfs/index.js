@@ -6,20 +6,6 @@ import { Smurf } from "../"
 
 class Smurfs extends Component {
 
-    componentDidMount() {
-        this.props.fetchSmurfs();
-    }
-
-    editSmurf = id => {
-
-        // If we click on "Edit" we ask our server for the info of the Smurf we want to edit.
-        this.props.fetchSmurfSingle(id).then(res => {
-
-            // If the server properly returns a smurf, we push to the smurf-form!
-            if (res) {this.props.history.push(`/smurf-form`)}
-        })
-    }
-
     render() {
         return (
             <div className="Smurfs">
@@ -42,6 +28,21 @@ class Smurfs extends Component {
             </div>
         )
     }
+
+    componentDidMount() {
+        this.props.fetchSmurfs();
+    }
+
+    editSmurf = id => {
+
+        // If we click on "Edit" we ask our server for the info of the Smurf we want to edit.
+        this.props.fetchSmurfSingle(id).then(res => {
+
+            // If the server properly returns a smurf, we push to the smurf-form!
+            if (res) {this.props.history.push(`/smurf-form`)}
+        })
+    }
+    
 }
 
 Smurfs.defaultProps = {
