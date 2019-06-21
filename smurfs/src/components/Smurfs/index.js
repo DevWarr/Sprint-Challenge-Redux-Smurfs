@@ -3,6 +3,11 @@ import React, { Component } from "react"
 import { Smurf } from "../"
 
 class Smurfs extends Component {
+
+    componentDidMount() {
+        this.props.fetchSmurfs();
+    }
+
     render() {
         return (
             <div className="Smurfs">
@@ -16,8 +21,8 @@ class Smurfs extends Component {
                                 age={smurf.age}
                                 height={smurf.height}
                                 key={smurf.id}
-                                update={this.props.update}
-                                delete={this.props.delete}
+                                update={this.props.updateSmurf} //
+                                delete={this.props.deleteSmurf} //
                             />
                         )
                     })}
@@ -27,7 +32,7 @@ class Smurfs extends Component {
     }
 }
 
-Smurf.defaultProps = {
+Smurfs.defaultProps = {
     smurfs: []
 }
 

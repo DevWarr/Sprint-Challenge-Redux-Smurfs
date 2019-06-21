@@ -14,9 +14,11 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <NavBar />
-                <Route exact path="/" component={Smurfs} />
-                <Route exact path="/smurf-form" component={SmurfForm} />
+                <div className="App">
+                    <NavBar />
+                    <Route exact path="/" component={Smurfs} />
+                    <Route exact path="/smurf-form" component={SmurfForm} />
+                </div>
             </Router>
         );
     }
