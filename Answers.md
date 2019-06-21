@@ -1,3 +1,5 @@
+Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions locatied in This document. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
+
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
 1.  Describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 1.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
