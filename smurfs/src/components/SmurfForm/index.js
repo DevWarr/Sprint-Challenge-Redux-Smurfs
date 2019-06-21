@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import axios from "axios"
 import { connect } from "react-redux";
 import { postSmurf, putSmurf } from "../../actions";
 
@@ -9,13 +8,13 @@ class SmurfForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            id: "",
-            name: "",
-            age: "",
-            height: "",
-            msgTitle: "Add a new Smurf!",
-            msgButton: "Add to the Village",
-            func: this.addSmurf
+            id:                 "",
+            name:               "",
+            age:                "",
+            height:             "",
+            msgTitle:           "Add a new Smurf!",
+            msgButton:          "Add to the Village",
+            func:               this.addSmurf
         }
     }
 
@@ -23,56 +22,30 @@ class SmurfForm extends Component {
         console.log(this.props);
         if (this.props.editSmurf.id) {
             this.setState({
-                id: this.props.editSmurf.id,
-                name: this.props.editSmurf.name,
-                age: this.props.editSmurf.age,
-                height: this.props.editSmurf.height.substring(0, this.props.editSmurf.height.length-2),
-                msgTitle: "Edit Smurf info:",
-                msgButton: "Confirm Changes",
-                func: this.updateSmurf
+                id:             this.props.editSmurf.id,
+                name:           this.props.editSmurf.name,
+                age:            this.props.editSmurf.age,
+                height:         this.props.editSmurf.height.substring(0, this.props.editSmurf.height.length-2),
+                msgTitle:       "Edit Smurf info:",
+                msgButton:      "Confirm Changes",
+                func:           this.updateSmurf
             })
         }
-    }
-
-    fetchSmurf = id => {
-        axios
-            .get(`http://localhost:3333/smurfs`)
-            .then(response => {
-                const editData = response.data.filter(smurf => (smurf.id === id))
-
-                if (!editData[0]) {
-                    console.log("No smurf found with this data!")
-                    return
-                }
-                console.log(editData[0])
-                this.setState({
-                    id: editData[0].id,
-                    name: editData[0].name,
-                    age: editData[0].age,
-                    height: editData[0].height.substring(0, editData[0].height.length-2),
-                    msgTitle: "Edit Smurf info:",
-                    msgButton: "Confirm Changes",
-                    func: this.updateSmurf
-                })
-            })
-            .catch(error => {
-                console.error(error)
-            })
     }
 
     addSmurf = event => {
         event.preventDefault()
 
         const newSmurf = {
-            name: this.state.name,
-            age: Number(this.state.age),
-            height: `${this.state.height}cm`
+            name:               this.state.name,
+            age:                Number(this.state.age),
+            height:             `${this.state.height}cm`
         }
 
         this.setState({
-            name: "",
-            age: "",
-            height: ""
+            name:               "",
+            age:                "",
+            height:             ""
         })
 
         this.props.postSmurf(newSmurf);
@@ -82,16 +55,16 @@ class SmurfForm extends Component {
     updateSmurf = e => {
         e.preventDefault()
         const smurf = {
-            id: this.state.id,
-            name: this.state.name,
-            age: Number(this.state.age),
-            height: `${this.state.height}cm`
+            id:                 this.state.id,
+            name:               this.state.name,
+            age:                Number(this.state.age),
+            height:             `${this.state.height}cm`
         }
 
         this.setState({
-            name: "",
-            age: "",
-            height: ""
+            name:               "",
+            age:                "",
+            height:             ""
         })
 
         this.props.putSmurf(smurf);
@@ -105,33 +78,35 @@ class SmurfForm extends Component {
     render() {
         return (
             <FormContainer>
-                <Form onSubmit={this.state.func}>
+                <Form onSubmit=         {this.state.func} >
                     <h2>{this.state.msgTitle}</h2>
                     <Input
-                        type="text"
-                        onChange={this.handleInputChange}
-                        placeholder="name"
-                        value={this.state.name}
-                        name="name"
+                        type=           "text"
+                        onChange=       {this.handleInputChange}
+                        placeholder=    "name"
+                        value=          {this.state.name}
+                        name=           "name"
                         required
                     />
                     <Input
-                        type="number"
-                        onChange={this.handleInputChange}
-                        placeholder="age"
-                        value={this.state.age}
-                        name="age"
+                        type=           "number"
+                        onChange=       {this.handleInputChange}
+                        placeholder=    "age"
+                        value=          {this.state.age}
+                        name=           "age"
                         required
                     />
                     <Input
-                        type="number"
-                        onChange={this.handleInputChange}
-                        placeholder="height"
-                        value={this.state.height}
-                        name="height"
+                        type=           "number"
+                        onChange=       {this.handleInputChange}
+                        placeholder=    "height"
+                        value=          {this.state.height}
+                        name=           "height"
                         required
                     />
-                    <Button type="submit">{this.state.msgButton}</Button>
+                    <Button type=       "submit">
+                        {this.state.msgButton}
+                    </Button>
                 </Form>
             </FormContainer>
         )
