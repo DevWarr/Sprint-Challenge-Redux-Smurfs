@@ -22,6 +22,27 @@ export const fetchSmurfs = () => dispatch => {
 }
 
 
+// Currently does nothing -------
+export const FETCH_SMURFSINGLE_START = "FETCH_SMURFSINGLE_START";
+export const FETCH_SMURFSINGLE_SUCCESS = "FETCH_SMURFSINGLE_SUCCESS";
+export const FETCH_SMURFSINGLE_FAILURE = "FETCH_SMURFSINGLE_FAILURE";
+export const fetchSMURFSINGLE = id => dispatch => {
+
+    dispatch({ type: FETCH_SMURFSINGLE_START });
+
+    axios
+        .get(`http://localhost:3333/smurfs/${id}`)
+        .then(res => {
+            console.log(res);
+            dispatch({ type: FETCH_SMURFSINGLE_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch({ type: FETCH_SMURFSINGLE_FAILURE, payload: err });
+        });
+}
+
+
 
 export const POST_SMURF_START = "POST_SMURF_START";
 export const POST_SMURF_SUCCESS = "POST_SMURF_SUCCESS";

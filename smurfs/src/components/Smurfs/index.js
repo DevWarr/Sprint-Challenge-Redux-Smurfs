@@ -10,6 +10,10 @@ class Smurfs extends Component {
         this.props.fetchSmurfs();
     }
 
+    updateSmurf = id => {
+        this.props.history.push(`/smurf-form/:${id}`)
+    }
+
     render() {
         return (
             <div className="Smurfs">
@@ -23,7 +27,7 @@ class Smurfs extends Component {
                                 age={smurf.age}
                                 height={smurf.height}
                                 key={smurf.id}
-                                update={this.props.putSmurf} //
+                                update={this.updateSmurf} //
                                 delete={this.props.deleteSmurf} //
                             />
                         )

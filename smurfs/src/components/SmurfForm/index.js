@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import axios from "axios"
-import { withRouter } from "react-router-dom"
+import { connect } from "react-redux";
+import { fetchSmurfSingle, postSmurf, putSmurf } from "../../actions";
+
 import { FormContainer, Form, Input, Button } from "./SmurfFormSC"
 
 class SmurfForm extends Component {
@@ -63,13 +65,14 @@ class SmurfForm extends Component {
             height: `${this.state.height}cm`
         }
 
-        this.props.addSmurf(newSmurf)
-
         this.setState({
             name: "",
             age: "",
             height: ""
         })
+
+        this.props.postSmurf(newSmurf)
+        this.props.history.push("/");
     }
 
     updateSmurf = e => {
@@ -130,4 +133,10 @@ class SmurfForm extends Component {
     }
 }
 
-export default withRouter(SmurfForm)
+const mstp = state => {
+    return {
+        editSmurf: state.editSmurf
+    };
+}
+
+export default connect(mstp, { postSmurf, putSmurf })(SmurfForm)

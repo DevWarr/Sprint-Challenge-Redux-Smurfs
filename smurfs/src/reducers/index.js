@@ -5,12 +5,13 @@ import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE,
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
 const initialState = {
-	smurfs: [],
-	fetchingSmurfs: false,
-	addingSmurf: false,
-	updatingSmurf: false,
-	deletingSmurf: false,
-	error: null,
+	smurfs:          [],
+	editSmurf:       {},
+	fetchingSmurfs:  false,
+	addingSmurf:     false,
+	updatingSmurf:   false,
+	deletingSmurf:   false,
+	error:           null,
 };
 
 /*
