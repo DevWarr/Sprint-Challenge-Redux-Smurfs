@@ -15,118 +15,112 @@ const initialState = {
 	error:         		  null,
 };
 
-/*
-    You'll only need one smurf reducer for this project.
-    Feel free to export it as a default and import as rootReducer. 
-    This will guard your namespacing issues.
-    There is no need for 'combineReducers' in this project.
-    Components can then read your store as, `state` and not `state.fooReducer`.
-*/
 export const reducer = (state = initialState, action) => {
 	switch (action.type) {
 
+		// Fetching all the smurfs for the Smurfs Page
 		case FETCH_SMURFS_START:
 			return {
 				...state,
-				fetchingSmurfs: true,
-				error: null,
+				fetchingSmurfs   	: true,
+				error            	: null,
 			};
 		case FETCH_SMURFS_SUCCESS:
 			return {
 				...state,
-				fetchingSmurfs: false,
-				smurfs: action.payload,
+				fetchingSmurfs   	: false,
+				smurfs           	: action.payload,
 			};
 		case FETCH_SMURFS_FAILURE:
 			return {
 				...state,
-				fetchingSmurfs: false,
-				error: `${action.payload}`,
+				fetchingSmurfs   	: false,
+				error			 	: `${action.payload}`,
 			};
 
 
-
+		// Fetching the single smurf when we need to edit it
 		case FETCH_SMURFSINGLE_START:
 			return {
 				...state,
-				fetchingSmurfSingle: true,
-				error: null,
+				fetchingSmurfSingle : true,
+				error               : null,
 			};
 		case FETCH_SMURFSINGLE_SUCCESS:
 			return {
 				...state,
-				fetchingSmurfSingle: false,
-				editSmurf: action.payload,
+				fetchingSmurfSingle : false,
+				editSmurf           : action.payload,
 			};
 		case FETCH_SMURFSINGLE_FAILURE:
 			return {
 				...state,
-				fetchingSmurfSingle: false,
-				error: `${action.payload}`,
+				fetchingSmurfSingle : false,
+				error				: `${action.payload}`,
 			};
 
 
-
+		// Adding a smurf to the DB
 		case POST_SMURF_START:
 			return {
 				...state,
-				addingSmurf: true,
-				error: null,
+				addingSmurf			: true,
+				error				: null,
 			};
 		case POST_SMURF_SUCCESS:
 			return {
 				...state,
-				addingSmurf: false,
-				smurfs: action.payload,
+				addingSmurf			: false,
+				smurfs				: action.payload,
 			};
 		case POST_SMURF_FAILURE:
 			return {
 				...state,
-				addingSmurf: false,
-				error: `${action.payload}`,
+				addingSmurf			: false,
+				error				: `${action.payload}`,
 			};
 
 
-
+		// Updating a Smurf within the DB
 		case PUT_SMURF_START:
 			return {
 				...state,
-				updatingSmurf: true,
-				error: null,
+				updatingSmurf		: true,
+				error				: null,
 			};
 		case PUT_SMURF_SUCCESS:
 			return {
 				...state,
-				updatingSmurf: false,
-				smurfs: action.payload,
-				editSmurf: {} // After editing, we don't want to return to the form with edit data. Reset it!
+				updatingSmurf		: false,
+				smurfs				: action.payload,
+				editSmurf			: {} // After editing, we don't want to return to the form with edit data. Reset it!
 			};
 		case PUT_SMURF_FAILURE:
 			return {
 				...state,
-				updatingSmurf: false,
-				error: `${action.payload}`,
+				updatingSmurf		: false,
+				error				: `${action.payload}`,
 			};
 
 
-
+		// Deleting a smurf from the DB
 		case DELETE_SMURF_START:
 			return {
 				...state,
-				deletingSmurf: true,
-				error: null,
+				deletingSmurf		: true,
+				error				: null,
 			};
 		case DELETE_SMURF_SUCCESS:
 			return {
 				...state,
-				deletingSmurf: false,
-				smurfs: action.payload,
+				deletingSmurf		: false,
+				smurfs				: action.payload,
 			};
 		case DELETE_SMURF_FAILURE:
 			return {
 				...state,
-				deletingSmurf: false,
-				error: `${action.payload}`,
+				deletingSmurf		: false,
+				error				: `${action.payload}`,
 			};
 
 

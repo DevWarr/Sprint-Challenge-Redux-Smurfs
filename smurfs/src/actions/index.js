@@ -2,9 +2,9 @@ import axios from "axios";
 
 
 
-export const FETCH_SMURFS_START = "FETCH_SMURFS_START";
-export const FETCH_SMURFS_SUCCESS = "FETCH_SMURFS_SUCCESS";
-export const FETCH_SMURFS_FAILURE = "FETCH_SMURFS_FAILURE";
+export const FETCH_SMURFS_START =       "FETCH_SMURFS_START";
+export const FETCH_SMURFS_SUCCESS =     "FETCH_SMURFS_SUCCESS";
+export const FETCH_SMURFS_FAILURE =     "FETCH_SMURFS_FAILURE";
 export const fetchSmurfs = () => dispatch => {
 
     dispatch({ type: FETCH_SMURFS_START });
@@ -21,10 +21,10 @@ export const fetchSmurfs = () => dispatch => {
 }
 
 
-// Currently does nothing -------
-export const FETCH_SMURFSINGLE_START = "FETCH_SMURFSINGLE_START";
-export const FETCH_SMURFSINGLE_SUCCESS = "FETCH_SMURFSINGLE_SUCCESS";
-export const FETCH_SMURFSINGLE_FAILURE = "FETCH_SMURFSINGLE_FAILURE";
+
+export const FETCH_SMURFSINGLE_START =     "FETCH_SMURFSINGLE_START";
+export const FETCH_SMURFSINGLE_SUCCESS =   "FETCH_SMURFSINGLE_SUCCESS";
+export const FETCH_SMURFSINGLE_FAILURE =   "FETCH_SMURFSINGLE_FAILURE";
 export const fetchSmurfSingle = id => dispatch => {
 
     dispatch({ type: FETCH_SMURFSINGLE_START });
@@ -54,9 +54,9 @@ export const fetchSmurfSingle = id => dispatch => {
 
 
 
-export const POST_SMURF_START = "POST_SMURF_START";
-export const POST_SMURF_SUCCESS = "POST_SMURF_SUCCESS";
-export const POST_SMURF_FAILURE = "POST_SMURF_FAILURE";
+export const POST_SMURF_START =     "POST_SMURF_START";
+export const POST_SMURF_SUCCESS =   "POST_SMURF_SUCCESS";
+export const POST_SMURF_FAILURE =   "POST_SMURF_FAILURE";
 export const postSmurf = smurf => dispatch => {
     
     dispatch({ type: POST_SMURF_START });
@@ -71,9 +71,9 @@ export const postSmurf = smurf => dispatch => {
 
 
 
-export const PUT_SMURF_START = "PUT_SMURF_START";
-export const PUT_SMURF_SUCCESS = "PUT_SMURF_SUCCESS";
-export const PUT_SMURF_FAILURE = "PUT_SMURF_FAILURE";
+export const PUT_SMURF_START =     "PUT_SMURF_START";
+export const PUT_SMURF_SUCCESS =   "PUT_SMURF_SUCCESS";
+export const PUT_SMURF_FAILURE =   "PUT_SMURF_FAILURE";
 export const putSmurf = smurf => dispatch => {
     
     dispatch({ type: PUT_SMURF_START });
@@ -89,9 +89,9 @@ export const putSmurf = smurf => dispatch => {
 
 
 
-export const DELETE_SMURF_START = "DELETE_SMURF_START";
-export const DELETE_SMURF_SUCCESS = "DELETE_SMURF_SUCCESS";
-export const DELETE_SMURF_FAILURE = "DELETE_SMURF_FAILURE";
+export const DELETE_SMURF_START =     "DELETE_SMURF_START";
+export const DELETE_SMURF_SUCCESS =   "DELETE_SMURF_SUCCESS";
+export const DELETE_SMURF_FAILURE =   "DELETE_SMURF_FAILURE";
 export const deleteSmurf = id => dispatch => {
     
     dispatch({ type: DELETE_SMURF_START });
