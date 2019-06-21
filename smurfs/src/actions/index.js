@@ -38,6 +38,8 @@ export const postSMURF = smurf => dispatch => {
         .catch(err => dispatch({ type: POST_SMURF_FAILURE, payload: err }))
 }
 
+
+
 export const PUT_SMURF_START = "PUT_SMURF_START";
 export const PUT_SMURF_SUCCESS = "PUT_SMURF_SUCCESS";
 export const PUT_SMURF_FAILURE = "PUT_SMURF_FAILURE";
@@ -53,6 +55,8 @@ export const putSmurf = smurf => dispatch => {
         })
         .catch(err => dispatch({ type: PUT_SMURF_FAILURE, payload: err }))
 }
+
+
 
 export const DELETE_SMURF_START = "DELETE_SMURF_START";
 export const DELETE_SMURF_SUCCESS = "DELETE_SMURF_SUCCESS";
