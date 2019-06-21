@@ -26,76 +26,76 @@ export const reducer = (state = initialState, action) => {
 		case FETCH_SMURFS_START:
 			return {
 				...state,
-				fetchingFriends: true,
+				fetchingSmurfs: true,
 				error: null,
 			};
 		case FETCH_SMURFS_SUCCESS:
 			return {
 				...state,
-				fetchingFriends: false,
-				friends: action.payload,
+				fetchingSmurfs: false,
+				smurfs: action.payload,
 			};
 		case FETCH_SMURFS_FAILURE:
 			return {
 				...state,
-				fetchingFriends: false,
+				fetchingSmurfs: false,
 				error: `${action.payload}`,
 			};
 
 		case POST_SMURF_START:
 			return {
 				...state,
-				addingFriend: true,
+				addingSmurf: true,
 				error: null,
 			};
 		case POST_SMURF_SUCCESS:
 			return {
 				...state,
-				addingFriend: false,
-				friends: action.payload,
+				addingSmurf: false,
+				smurfs: action.payload,
 			};
 		case POST_SMURF_FAILURE:
 			return {
 				...state,
-				addingFriend: false,
+				addingSmurf: false,
 				error: `${action.payload}`,
 			};
 
 		case PUT_SMURF_START:
 			return {
 				...state,
-				updatingFriend: true,
+				updatingSmurf: true,
 				error: null,
 			};
 		case PUT_SMURF_SUCCESS:
 			return {
 				...state,
-				updatingFriend: false,
-				friends: action.payload,
+				updatingSmurf: false,
+				smurfs: action.payload,
 			};
 		case PUT_SMURF_FAILURE:
 			return {
 				...state,
-				updatingFriend: false,
+				updatingSmurf: false,
 				error: `${action.payload}`,
 			};
 
 		case DELETE_SMURF_START:
 			return {
 				...state,
-				deletingFriend: true,
+				deletingSmurf: true,
 				error: null,
 			};
 		case DELETE_SMURF_SUCCESS:
 			return {
 				...state,
-				deletingFriend: false,
-				friends: action.payload,
+				deletingSmurf: false,
+				smurfs: action.payload,
 			};
 		case DELETE_SMURF_FAILURE:
 			return {
 				...state,
-				deletingFriend: false,
+				deletingSmurf: false,
 				error: `${action.payload}`,
 			};
 
