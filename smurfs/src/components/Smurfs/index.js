@@ -11,7 +11,11 @@ class Smurfs extends Component {
     }
 
     editSmurf = id => {
+
+        // If we click on "Edit" we ask our server for the info of the Smurf we want to edit.
         this.props.fetchSmurfSingle(id).then(res => {
+
+            // If the server properly returns a smurf, we push to the smurf-form!
             if (res) {this.props.history.push(`/smurf-form`)}
         })
     }
