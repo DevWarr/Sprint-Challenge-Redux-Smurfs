@@ -20,13 +20,17 @@ class SmurfForm extends Component {
     }
 
     componentWillMount() {
-        // change this line to grab the id passed on the URL
-        console.log(this.props)
-        if (this.props.history.location.checker >= 0) {
-            const id = this.props.history.location.checker
-            this.fetchSmurf(id)
-        } else {
-            return
+        console.log(this.props);
+        if (this.props.editSmurf.id) {
+            this.setState({
+                id: this.props.editSmurf.id,
+                name: this.props.editSmurf.name,
+                age: this.props.editSmurf.age,
+                height: this.props.editSmurf.height.substring(0, this.props.editSmurf.height.length-2),
+                msgTitle: "Edit Smurf info:",
+                msgButton: "Confirm Changes",
+                func: this.updateSmurf
+            })
         }
     }
 
@@ -58,7 +62,7 @@ class SmurfForm extends Component {
 
     addSmurf = event => {
         event.preventDefault()
-        // add code to create the smurf using the api
+
         const newSmurf = {
             name: this.state.name,
             age: Number(this.state.age),
@@ -71,7 +75,7 @@ class SmurfForm extends Component {
             height: ""
         })
 
-        this.props.postSmurf(newSmurf)
+        this.props.postSmurf(newSmurf);
         this.props.history.push("/");
     }
 
@@ -84,13 +88,14 @@ class SmurfForm extends Component {
             height: `${this.state.height}cm`
         }
 
-        this.props.putSmurf(smurf)
-
         this.setState({
             name: "",
             age: "",
             height: ""
         })
+
+        this.props.putSmurf(smurf);
+        this.props.history.push("/");
     }
 
     handleInputChange = e => {

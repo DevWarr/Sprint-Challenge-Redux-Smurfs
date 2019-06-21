@@ -11,8 +11,9 @@ class Smurfs extends Component {
     }
 
     editSmurf = id => {
-        this.props.fetchSmurfSingle(id)
-        this.props.history.push(`/smurf-form`)
+        this.props.fetchSmurfSingle(id).then(res => {
+            if (res) {this.props.history.push(`/smurf-form`)}
+        })
     }
 
     render() {
