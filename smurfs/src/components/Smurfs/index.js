@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { fetchSmurfs, putSmurf, deleteSmurf } from "../../actions";
+import { connect } from "react-redux";
 
 import { Smurf } from "../"
 
@@ -21,7 +23,7 @@ class Smurfs extends Component {
                                 age={smurf.age}
                                 height={smurf.height}
                                 key={smurf.id}
-                                update={this.props.updateSmurf} //
+                                update={this.props.putSmurf} //
                                 delete={this.props.deleteSmurf} //
                             />
                         )
@@ -32,8 +34,11 @@ class Smurfs extends Component {
     }
 }
 
-Smurfs.defaultProps = {
-    smurfs: []
+const mstp = state => {
+    return {
+        smurfs:          state.smurfs,
+        fetchingSmurfs:  state.fetchingSmurfs
+    }
 }
 
-export default Smurfs
+export default connect(mstp, { fetchSmurfs, putSmurf, deleteSmurf })(Smurfs);

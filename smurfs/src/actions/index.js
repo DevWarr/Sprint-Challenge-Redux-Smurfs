@@ -10,7 +10,7 @@ export const fetchSmurfs = () => dispatch => {
     dispatch({ type: FETCH_SMURFS_START });
 
     axios
-        .get("http://localhost:5000/smurfs")
+        .get("http://localhost:3333/smurfs")
         .then(res => {
             console.log(res);
             dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data })
@@ -26,12 +26,12 @@ export const fetchSmurfs = () => dispatch => {
 export const POST_SMURF_START = "POST_SMURF_START";
 export const POST_SMURF_SUCCESS = "POST_SMURF_SUCCESS";
 export const POST_SMURF_FAILURE = "POST_SMURF_FAILURE";
-export const postSMURF = smurf => dispatch => {
+export const postSmurf = smurf => dispatch => {
     
     dispatch({ type: POST_SMURF_START });
 
     axios
-        .post("http://localhost:5000/smurfs", smurf)
+        .post("http://localhost:3333/smurfs", smurf)
         .then( res => {
             dispatch({ type: POST_SMURF_SUCCESS, payload: res.data })
         })
@@ -49,7 +49,7 @@ export const putSmurf = smurf => dispatch => {
 
     const id = smurf.id;
     axios
-        .put(`http://localhost:5000/smurfs/${id}`, smurf)
+        .put(`http://localhost:3333/smurfs/${id}`, smurf)
         .then( res => {
             dispatch({ type: PUT_SMURF_SUCCESS, payload: res.data })
         })
@@ -61,12 +61,12 @@ export const putSmurf = smurf => dispatch => {
 export const DELETE_SMURF_START = "DELETE_SMURF_START";
 export const DELETE_SMURF_SUCCESS = "DELETE_SMURF_SUCCESS";
 export const DELETE_SMURF_FAILURE = "DELETE_SMURF_FAILURE";
-export const deleteSmurfs = id => dispatch => {
+export const deleteSmurf = id => dispatch => {
     
     dispatch({ type: DELETE_SMURF_START });
 
     axios
-        .delete(`http://localhost:5000/smurfs/${id}`, id)
+        .delete(`http://localhost:3333/smurfs/${id}`, id)
         .then( res => {
             dispatch({ type: DELETE_SMURF_SUCCESS, payload: res.data })
         })
