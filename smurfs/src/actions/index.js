@@ -12,7 +12,6 @@ export const fetchSmurfs = () => dispatch => {
     axios
         .get("http://localhost:3333/smurfs")
         .then(res => {
-            console.log(res);
             dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data })
         })
         .catch(err => {
@@ -26,15 +25,26 @@ export const fetchSmurfs = () => dispatch => {
 export const FETCH_SMURFSINGLE_START = "FETCH_SMURFSINGLE_START";
 export const FETCH_SMURFSINGLE_SUCCESS = "FETCH_SMURFSINGLE_SUCCESS";
 export const FETCH_SMURFSINGLE_FAILURE = "FETCH_SMURFSINGLE_FAILURE";
-export const fetchSMURFSINGLE = id => dispatch => {
+export const fetchSmurfSingle = id => dispatch => {
 
     dispatch({ type: FETCH_SMURFSINGLE_START });
 
-    axios
-        .get(`http://localhost:3333/smurfs/${id}`)
+    /*  We return this axios call as a function.
+        If we CAN find a smurf in our server to edit, return true.
+        If we CAN'T find a smurf, return false.
+        This will determine whether we redirect to the smurf-form or not
+    */
+    return axios
+        .get(`http://localhost:3333/smurfs/`)
         .then(res => {
             console.log(res);
-            dispatch({ type: FETCH_SMURFSINGLE_SUCCESS, payload: res.data })
+            const editSmurf = res.data.find(smurf => smurf.id === id);
+            if (!editSmurf) {
+                dispatch({ type: FETCH_SMURFSINGLE_FAILURE, payload: "This Smurf id doesn't exit!" });
+                return false; // No smurf found!
+            }
+            dispatch({ type: FETCH_SMURFSINGLE_SUCCESS, payload: editSmurf });
+            return true; // Smurf found! Let's edit!
         })
         .catch(err => {
             console.log(err);

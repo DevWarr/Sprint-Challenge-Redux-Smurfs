@@ -4,7 +4,7 @@ import { SmurfCard, CardButton, Name, Age, Height } from "./SmurfSC"
 const Smurf = props => {
     return (
         <SmurfCard>
-            <CardButton onClick={() => props.update(props.id)}>Update</CardButton>
+            <CardButton onClick={() => props.edit(props.id)}>Edit</CardButton>
             <CardButton onClick={() => props.delete(props.id)}>Remove</CardButton>
             <Name>{props.name}</Name>
             <Height>{props.height} tall</Height>

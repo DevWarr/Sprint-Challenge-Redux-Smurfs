@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { fetchSmurfs, putSmurf, deleteSmurf } from "../../actions";
+import { fetchSmurfs, fetchSmurfSingle, deleteSmurf } from "../../actions";
 import { connect } from "react-redux";
 
 import { Smurf } from "../"
@@ -10,8 +10,9 @@ class Smurfs extends Component {
         this.props.fetchSmurfs();
     }
 
-    updateSmurf = id => {
-        this.props.history.push(`/smurf-form/:${id}`)
+    editSmurf = id => {
+        this.props.fetchSmurfSingle(id)
+        this.props.history.push(`/smurf-form`)
     }
 
     render() {
@@ -27,7 +28,7 @@ class Smurfs extends Component {
                                 age={smurf.age}
                                 height={smurf.height}
                                 key={smurf.id}
-                                update={this.updateSmurf} //
+                                edit={this.editSmurf} //
                                 delete={this.props.deleteSmurf} //
                             />
                         )
@@ -38,6 +39,10 @@ class Smurfs extends Component {
     }
 }
 
+Smurfs.defaultProps = {
+    smurfs: []
+}
+
 const mstp = state => {
     return {
         smurfs:          state.smurfs,
@@ -45,4 +50,4 @@ const mstp = state => {
     }
 }
 
-export default connect(mstp, { fetchSmurfs, putSmurf, deleteSmurf })(Smurfs);
+export default connect(mstp, { fetchSmurfs, fetchSmurfSingle, deleteSmurf })(Smurfs);

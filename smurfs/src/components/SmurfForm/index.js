@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
 import { connect } from "react-redux";
-import { fetchSmurfSingle, postSmurf, putSmurf } from "../../actions";
+import { postSmurf, putSmurf } from "../../actions";
 
 import { FormContainer, Form, Input, Button } from "./SmurfFormSC"
 
